@@ -2,7 +2,6 @@ import React from "react";
 import VideoItem from "./VideoItem";
 
 const VideoList = ({ results }) => {
-    
     return (
         <div>
             {
