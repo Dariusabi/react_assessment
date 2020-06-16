@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 
 
-export function SearchBar() {
+function SearchBar() {
     const [text, setText] = useState('');
 
-    const handleSubmit = (evt) => {
-        evt.preventDefault();
+    const handleSubmit = (e) => {
+        e.preventDefault();
     };
 
     return (
@@ -19,3 +19,5 @@ export function SearchBar() {
         </div>
     )
 }
+
+export default SearchBar;
