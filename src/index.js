@@ -1,17 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SearchBar from "./components/Search";
-import VideoList from "./components/Items";
-import Youtube from "./components/Video";
+
+import SearchPage from "./components/SearchPage";
 
 function App() {
 
-    return (
-        <div>
-            <SearchBar />
-
-        </div>
-    );
+    return (<SearchPage/>);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
