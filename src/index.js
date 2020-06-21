@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from "./actions/App";
 
-import SearchPage from "./components/SearchPage";
 
-function App() {
-    return (<SearchPage/>);
-}
+// document.addEventListener('DOMContentLoaded', function () {
+//     ReactDOM.render(
+//         <App />,
+//         document.getElementById('root')
+//     );
+// });
 
-document.addEventListener('DOMContentLoaded', function () {
-    ReactDOM.render(
-        <App />,
-        document.getElementById('root')
-    );
-});
-
+ReactDOM.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+    document.getElementById('root')
+);

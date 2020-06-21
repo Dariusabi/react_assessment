@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-
-import youtube from '../apis/youtube';
-
+import youtube from '../actions/youtube';
 import SearchBar from "./SearchBar";
 import VideoList from "./VideoList";
+
 
 function SearchPage() {
     const [results, setResult] = useState([]);
@@ -11,15 +10,18 @@ function SearchPage() {
     const searchTextChanged = async (searchText) => {
         const response = await youtube.get('/search', {
             params: { q: searchText }
-        })
+        });
         
         setResult(response.data.items)
     };
-    
+
+
     return (
         <div>
-            <SearchBar setText={searchTextChanged} />
-            <VideoList results={results}/>
+            <SearchBar setText={searchTextChanged}/>
+            <div>
+                <VideoList results={results}/>
+            </div>
         </div>
     )
 }
