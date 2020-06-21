@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import {signup} from "../actions/auth";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { signin } from "../services/auth";
 
-export default class SignUp extends Component {
+export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -10,37 +10,33 @@ export default class SignUp extends Component {
             email: '',
             password: ''
         };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event) {
+    handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
         });
-    }
+    };
 
-    async handleSubmit(event) {
+    handleSubmit = async (event) => {
         event.preventDefault();
         this.setState({
             error: ''
         });
         try {
-            await signup(this.state.email, this.state.password);
-        } catch (error) {
+            await signin(this.state.email, this.state.password);
+        }catch (error) {
             this.setState({
                 error: error.message
-            })
+            });
         }
-    }
+    };
 
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit} autoComplete="off" className="form">
-                    <h1 className="title signup">
-                        SignUp
-                    </h1>
+                <form className="form" autoComplete="off" onSubmit={this.handleSubmit}>
+                    <h1 className="title signup">SignIn</h1>
                     <div className="input-group mb-3 large">
                         <input
                             className="form-control"
@@ -50,29 +46,32 @@ export default class SignUp extends Component {
                             name="email"
                             type="email"
                             onChange={this.handleChange}
-                            value={this.state.email}/>
+                            value={this.state.email}
+                        />
                     </div>
                     <div className="input-group mb-3 large">
                         <input
                             className="form-control"
                             aria-label="Email"
                             aria-describedby="basic-adon1"
-                            placeholder="Password"
+                            placeholder='Password'
                             name="password"
                             onChange={this.handleChange}
                             value={this.state.password}
                             type="password"
                         />
                     </div>
-                    <hr/>
+                    <hr />
                     <div className="location">
                         {this.state.error ? <p>{this.state.error}</p> : null}
-                        <button className="btn btn-secondary" type="submit">Sign Up</button>
+                        <button className="btn btn-secondary" type="submit">Sign In</button>
                     </div>
-                    <hr/>
-                    <p className="signup">Already have an account? <Link to="/login">Sign In</Link></p>
+                    <hr />
+                    <p className="signup">
+                        Don't have an account? <Link to="/signup">Sign Up</Link>
+                    </p>
                 </form>
             </div>
-        );
+        )
     }
 }

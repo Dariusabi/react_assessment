@@ -4,12 +4,15 @@ import {
     BrowserRouter as Router,
     Switch,
 } from "react-router-dom";
-import SearchPage from '../components/SearchPage';
-import Signup from '../actions/SignUp';
-import SignIn from '../actions/SignIn';
-import { auth } from '../actions/firebase';
-import { PublicRoute, PrivateRoute } from '../actions/Router';
-import LandingPage from 'LandingPage';
+
+import SearchPage from './SearchPage';
+import Signup from './SignUp';
+import SignIn from './SignIn';
+import { auth } from '../services/firebase';
+import { PublicRoute, PrivateRoute } from './Router';
+import LandingPage from './LandingPage';
+
+console.log(LandingPage);
 
 
 class App extends Component {
@@ -41,7 +44,7 @@ class App extends Component {
         return this.state.loading === true ? <h2>Loading...</h2> : (
             <Router>
                 <Switch>
-                    <Route exact path="/" component={LandinPage}/>
+                    <Route exact path="/" component={LandingPage}/>
                     <PrivateRoute path="/foodtrucks" authenticated={this.state.authenticated} component={SearchPage}/>
                     <PublicRoute path="/signup" authenticated={this.state.authenticated} component={Signup}/>
                     <PublicRoute path="/signin" authenticated={this.state.authenticated} component={SignIn}/>
