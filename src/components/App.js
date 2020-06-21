@@ -12,9 +12,6 @@ import { auth } from '../services/firebase';
 import { PublicRoute, PrivateRoute } from './Router';
 import LandingPage from './LandingPage';
 
-console.log(LandingPage);
-
-
 class App extends Component {
     constructor() {
         super();
